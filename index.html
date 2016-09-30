@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="customerApp">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript">
+        var customerApp = angular.module('customerApp', []);
+        customerApp.controller('customerCtrl', function($scope, $http){
+            $scope.test = "TEST"
+            $http.get('http://localhost:5000/customers').then(
+                function success(response){
+                    console.log(response.data)
+                }, function fail(response){
+                    console.log(response)
+                });
+        });
+    </script>
+</head>
+<body ng-controller="customerCtrl">
+{{test}}
+</body>
+</html>
